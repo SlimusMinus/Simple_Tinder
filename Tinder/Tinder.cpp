@@ -1,8 +1,8 @@
 #include "Tinder.h"
 
-Tinder::Tinder(string gender, string name, string surname, int age, 
-	string zodiac_sign, string town, string gender_f,string zodiac_sign_f,
-	 string town_f, int age_f, int age_f2, vector <string> vect_s, double count)
+Tinder::Tinder(string gender, string name, string surname, int age,
+	string zodiac_sign, string town, string gender_f, string zodiac_sign_f,
+	string town_f, int age_f, int age_f2, vector <string> vect_s, double count)
 {
 	this->age = age;
 	this->gender = gender;
@@ -19,7 +19,7 @@ Tinder::Tinder(string gender, string name, string surname, int age,
 	this->vect_s = vect_s;
 }
 
-Tinder::Tinder(string gender, string name, string surname, int age, 
+Tinder::Tinder(string gender, string name, string surname, int age,
 	string zodiac_sign, string town, string gender_f,
 	string zodiac_sign_f, string town_f, int age_f, int age_f2,
 	vector <string> vect_s)
@@ -45,24 +45,41 @@ void Tinder::Run(Tinder tn, vector<Tinder> vec)
 		vec[i].count = 0;
 		if (tn.gender_f == vec[i].gender && vec[i].gender_f == tn.gender)
 			vec[i].count++;
-		if(tn.zodiac_sign_f == vec[i].zodiac_sign && vec[i].zodiac_sign_f == tn.zodiac_sign)
+		if (tn.zodiac_sign_f == vec[i].zodiac_sign && vec[i].zodiac_sign_f == tn.zodiac_sign)
 			vec[i].count++;
-		if(tn.town_f == vec[i].town && vec[i].town_f == tn.town)
+		if (tn.town_f == vec[i].town && vec[i].town_f == tn.town)
 			vec[i].count++;
-		if(tn.age_f < vec[i].age && tn.age_f2 > vec[i].age && vec[i].age_f < tn.age && vec[i].age_f2 > tn.age)
+		if (tn.age_f < vec[i].age && tn.age_f2 > vec[i].age && vec[i].age_f < tn.age && vec[i].age_f2 > tn.age)
 			vec[i].count++;
-		
-		for (int i = 0; i < 3; i++)
+
+
+		for (int j = 0; j != tn.vect_s.size(); j++)
 		{
-			for (int j = 0; j < 3; j++)
+			for (int q = 0; q != vec[i].vect_s.size(); q++)
 			{
-				if (tn.vect_s[j] == vec[i].vect_s[i])
-					vec[i].count ++;
+				if (tn.vect_s[j] == vec[i].vect_s[q])
+					vec[i].count++;
 			}
-			
+
 		}
-		cout << tn.name << " " << tn.surname << " и " << vec[i].name << " " << vec[i].surname << endl;
-		cout << "Выпало " << vec[i].count << " совпадений" << endl;
+
+		//cout << tn.name << " " << tn.surname << " и " << vec[i].name << " " << vec[i].surname << endl;
+		//cout << "Выпало " << vec[i].count << " совпадений" << endl;
+		//cout << "======================================================" << endl;
+
+	}
+	
+
+	cout << "**************************************************************" << endl;
+	cout << "Вашему вниманию предоставлен отсортированный список совпадений" << endl;
+	cout << "**************************************************************\n\n" << endl;
+
+	sort(vec.begin(), vec.end(), vec.front());
+	for (int i = 0; i < vec.size(); i++)
+	{
+		cout << "У " << tn.name << " " << tn.surname << " и ";
+		vec[i].Show();
+		cout << "*********************************************************" << endl;
 	}
 }
 
@@ -77,19 +94,35 @@ void Tinder::interest()
 
 void Tinder::Print()
 {
-	cout << name << " " << surname << " " << age << " лет " << zodiac_sign
-		<< " родной город - " << town << "\nИщет " << gender_f << " " << zodiac_sign_f
+	cout << name << " " << surname << " " << age << " года (лет) " << zodiac_sign
+		<< " родной город - " << town << "\nИщет пол - " << gender_f << " знак зодиака - " << zodiac_sign_f
 		<< " из города " << town_f << " " << "в возратсе от" << " " << age_f
 		<< " до" << " " << age_f2 << " лет\n" << "Интересы" << endl;
 	interest();
 }
 
+bool Tinder::operator()(const Tinder& qw, const Tinder& qw2)
+{
+	return qw.count > qw2.count;
+}
 
-//ostream& operator<<(ostream& os, Tinder& qw)
-//{
-//	os << qw.name << " " << qw.surname << " " << qw.age << " лет " << qw.zodiac_sign
-//		<< " родной город - " << qw.town << "\nИщет " << qw.gender_f << " " << qw.zodiac_sign_f
-//		<< " из города " << qw.town_f << " " << "в возратсе от" << " " << qw.age_f
-//		<< " до" << " " << qw.age_f2 << " лет" << endl;
-//		return os;
-//}
+void Tinder::Show()
+{
+	cout << name << " " << surname << " " << count << " совпадения" << endl;
+}
+
+void gotoxy(short x, short y)
+{
+	COORD coord = { x, y };
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleCursorPosition(h, coord);
+}
+
+void show_menu()
+{
+	system("cls");
+	cout << "Женщину" << endl;
+	cout << "Мужчину" << endl;
+	cout << "=====================" << endl;
+	cout << "Press ESC to exit" << endl;
+}
