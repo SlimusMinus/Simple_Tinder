@@ -1,4 +1,4 @@
-#include "Tinder.h"
+ï»¿#include "Tinder.h"
 
 Tinder::Tinder(string gender, string name, string surname, int age,
 	string zodiac_sign, string town, string gender_f, string zodiac_sign_f,
@@ -63,21 +63,21 @@ void Tinder::Run(Tinder tn, vector<Tinder> vec)
 
 		}
 
-		//cout << tn.name << " " << tn.surname << " è " << vec[i].name << " " << vec[i].surname << endl;
-		//cout << "Âûïàëî " << vec[i].count << " ñîâïàäåíèé" << endl;
+		//cout << tn.name << " " << tn.surname << " Ð¸ " << vec[i].name << " " << vec[i].surname << endl;
+		//cout << "Ð’Ñ‹Ð¿Ð°Ð»Ð¾ " << vec[i].count << " ÑÐ¾Ð²Ð¿Ð°Ð´ÐµÐ½Ð¸Ð¹" << endl;
 		//cout << "======================================================" << endl;
 
 	}
 	
 
 	cout << "**************************************************************" << endl;
-	cout << "Âàøåìó âíèìàíèþ ïðåäîñòàâëåí îòñîðòèðîâàííûé ñïèñîê ñîâïàäåíèé" << endl;
+	cout << "Ð’Ð°ÑˆÐµÐ¼Ñƒ Ð²Ð½Ð¸Ð¼Ð°Ð½Ð¸ÑŽ Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ð»ÐµÐ½ Ð¾Ñ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº ÑÐ¾Ð²Ð¿Ð°Ð´ÐµÐ½Ð¸Ð¹" << endl;
 	cout << "**************************************************************\n\n" << endl;
 
 	sort(vec.begin(), vec.end(), vec.front());
 	for (int i = 0; i < vec.size(); i++)
 	{
-		cout << "Ó " << tn.name << " " << tn.surname << " è ";
+		cout << "Ð£ " << tn.name << " " << tn.surname << " Ð¸ ";
 		vec[i].Show();
 		cout << "*********************************************************" << endl;
 	}
@@ -94,10 +94,10 @@ void Tinder::interest()
 
 void Tinder::Print()
 {
-	cout << name << " " << surname << " " << age << " ãîäà (ëåò) " << zodiac_sign
-		<< " ðîäíîé ãîðîä - " << town << "\nÈùåò ïîë - " << gender_f << " çíàê çîäèàêà - " << zodiac_sign_f
-		<< " èç ãîðîäà " << town_f << " " << "â âîçðàòñå îò" << " " << age_f
-		<< " äî" << " " << age_f2 << " ëåò\n" << "Èíòåðåñû" << endl;
+	cout << name << " " << surname << " " << age << " Ð³Ð¾Ð´Ð° (Ð»ÐµÑ‚) " << zodiac_sign
+		<< " Ñ€Ð¾Ð´Ð½Ð¾Ð¹ Ð³Ð¾Ñ€Ð¾Ð´ - " << town << "\nÐ˜Ñ‰ÐµÑ‚ Ð¿Ð¾Ð» - " << gender_f << " Ð·Ð½Ð°Ðº Ð·Ð¾Ð´Ð¸Ð°ÐºÐ° - " << zodiac_sign_f
+		<< " Ð¸Ð· Ð³Ð¾Ñ€Ð¾Ð´Ð° " << town_f << " " << "Ð² Ð²Ð¾Ð·Ñ€Ð°Ñ‚ÑÐµ Ð¾Ñ‚" << " " << age_f
+		<< " Ð´Ð¾" << " " << age_f2 << " Ð»ÐµÑ‚\n" << "Ð˜Ð½Ñ‚ÐµÑ€ÐµÑÑ‹" << endl;
 	interest();
 }
 
@@ -108,7 +108,7 @@ bool Tinder::operator()(const Tinder& qw, const Tinder& qw2)
 
 void Tinder::Show()
 {
-	cout << name << " " << surname << " " << count << " ñîâïàäåíèÿ" << endl;
+	cout << name << " " << surname << " " << count << " ÑÐ¾Ð²Ð¿Ð°Ð´ÐµÐ½Ð¸Ñ" << endl;
 }
 
 void gotoxy(short x, short y)
@@ -121,8 +121,8 @@ void gotoxy(short x, short y)
 void show_menu()
 {
 	system("cls");
-	cout << "Æåíùèíó" << endl;
-	cout << "Ìóæ÷èíó" << endl;
+	cout << "Ð–ÐµÐ½Ñ‰Ð¸Ð½Ñƒ" << endl;
+	cout << "ÐœÑƒÐ¶Ñ‡Ð¸Ð½Ñƒ" << endl;
 	cout << "=====================" << endl;
 	cout << "Press ESC to exit" << endl;
 }
