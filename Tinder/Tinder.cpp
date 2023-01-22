@@ -2,7 +2,7 @@
 
 Tinder::Tinder(string gender, string name, string surname, int age,
 	string zodiac_sign, string town, string gender_f, string zodiac_sign_f,
-	string town_f, int age_f, int age_f2, vector <string> vect_s, double count)
+	string town_f, int age_f, int age_f2, vector <string> vect_s, int count)
 {
 	this->age = age;
 	this->gender = gender;
@@ -19,24 +19,6 @@ Tinder::Tinder(string gender, string name, string surname, int age,
 	this->vect_s = vect_s;
 }
 
-Tinder::Tinder(string gender, string name, string surname, int age,
-	string zodiac_sign, string town, string gender_f,
-	string zodiac_sign_f, string town_f, int age_f, int age_f2,
-	vector <string> vect_s)
-{
-	this->age = age;
-	this->gender = gender;
-	this->name = name;
-	this->surname = surname;
-	this->town = town;
-	this->zodiac_sign = zodiac_sign;
-	this->gender_f = gender_f;
-	this->zodiac_sign_f = zodiac_sign_f;
-	this->town_f = town_f;
-	this->age_f = age_f;
-	this->age_f2 = age_f2;
-	this->vect_s = vect_s;
-}
 
 void Tinder::Run(Tinder tn, vector<Tinder> vec)
 {
@@ -52,7 +34,6 @@ void Tinder::Run(Tinder tn, vector<Tinder> vec)
 		if (tn.age_f < vec[i].age && tn.age_f2 > vec[i].age && vec[i].age_f < tn.age && vec[i].age_f2 > tn.age)
 			vec[i].count++;
 
-
 		for (int j = 0; j != tn.vect_s.size(); j++)
 		{
 			for (int q = 0; q != vec[i].vect_s.size(); q++)
@@ -60,16 +41,9 @@ void Tinder::Run(Tinder tn, vector<Tinder> vec)
 				if (tn.vect_s[j] == vec[i].vect_s[q])
 					vec[i].count++;
 			}
-
 		}
-
-		//cout << tn.name << " " << tn.surname << " и " << vec[i].name << " " << vec[i].surname << endl;
-		//cout << "Выпало " << vec[i].count << " совпадений" << endl;
-		//cout << "======================================================" << endl;
-
 	}
 	
-
 	cout << "**************************************************************" << endl;
 	cout << "Вашему вниманию предоставлен отсортированный список совпадений" << endl;
 	cout << "**************************************************************\n\n" << endl;

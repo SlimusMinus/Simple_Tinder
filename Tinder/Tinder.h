@@ -16,21 +16,16 @@ void show_menu();
 class Tinder
 {
 private:
-	string gender, name, surname, zodiac_sign, town;
-	int age;
-	double count;
-	string gender_f, zodiac_sign_f, town_f;
-	int age_f, age_f2;
+	string gender, name, surname, zodiac_sign, town, gender_f, zodiac_sign_f, town_f;
+	int age_f, age_f2, age, count;
 	vector <Tinder> vec;
 	vector <string> vect_s;
 
 public:
 
 	Tinder(string gender, string name, string surname, int age, string zodiac_sign, string town,
-		string gender_f, string zodiac_sign_f, string town_f, int age_f, int age_f2, vector <string> vect_s, double count);
+		string gender_f, string zodiac_sign_f, string town_f, int age_f, int age_f2, vector <string> vect_s, int count);
 
-	Tinder(string gender, string name, string surname, int age, string zodiac_sign, string town,
-		string gender_f, string zodiac_sign_f, string town_f, int age_f, int age_f2, vector <string> vect_s);
 	void interest();
 	void Run(Tinder tn, vector <Tinder> vec);
 	void Print();
